@@ -1,0 +1,91 @@
+
+server:
+  port: 8433
+  ssl:
+    #www.flywill.xyz.jks  P:5v78168fn872r87
+    #66服务器
+
+#    key-store: classpath:indoormap.good-map.com.jks
+#    key-store-password: T9z03q45
+
+    #140服务器
+    key-store: classpath:5231303_indoormap.congrongtech.cn.jks
+    key-store-password: 5jm489it
+
+    key-store-type: JKS
+
+spring:
+  datasource:
+    indoormap:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      username: sa
+ #     password: Zhdy12345@
+ #     jdbc-url: jdbc:sqlserver://122.112.220.66:1433;databasename=indoormap;
+#      password: Ht123
+#      jdbc-url: jdbc:sqlserver://47.99.153.233:1433;databasename=indoormap;
+      password: Ht123
+      jdbc-url: jdbc:sqlserver://8.136.137.140:1433;databasename=indoormap;
+
+    indoormapsde:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      username: sa
+#      password: Zhdy12345@
+#      jdbc-url: jdbc:sqlserver://122.112.220.66:1433;databasename=indoormapsde;
+      password: Ht123
+      jdbc-url: jdbc:sqlserver://8.136.137.140:1433;databasename=indoormapsde;
+
+  servlet:
+    multipart:
+      enabled: true #开启文件上传功能
+      max-file-size: 100MB #最大文件大小
+      max-request-size: 100MB #最大请求文件大小
+  redis:
+    database: 1
+    host: 127.0.0.1
+    port: 6379
+    password: Htkj12345@
+#    Htkj12345@
+    timeout: 2000
+    lettuce:
+      pool:
+        max-idle: 100
+        max-active: 100
+        max-wait: -1
+        min-idle: 3
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true  #开启驼峰命名
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #ibatis日志记录
+swagger:
+  enabled: true
+jasypt:
+  encryptor:
+    password: rytyhhyjlkg_lkgnyzjsj001 #加密的盐值
+logging:
+  level:
+    com:
+      goodmap:
+        hospital:
+          mapper: debug
+
+#微信相关配置
+wx:
+  #appId （到时候换成自己公众号的）
+#  appId: wx54d28b0648d126b7
+#  方瑞：wx139bbf4cfd29890a
+  appId: wx139bbf4cfd29890a
+  #appSecret（到时候换成自己公众号的）
+#  appSecret: ca7a3b3bb4c51b350578bd957b64a5a3
+#  方瑞：9f8dd4ed12eb1a15d54059443ae8501b
+  appSecret: 9f8dd4ed12eb1a15d54059443ae8501b
+  #参考以下文档获取access_token（有效期7200秒，开发者必须在自己的服务全局缓存access_token）
+  jssdk_accesstoken_url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
+  #用第一步拿到的access_token 采用http GET方式请求获得jsapi_ticket（有效期7200秒，开发者必须在自己的服务全局缓存jsapi_ticket）
+  jssdk_getticket_url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&type=jsapi
+
+file:
+  root:
+    rests: C:/indoorMap/resources/static/images
